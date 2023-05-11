@@ -1,5 +1,6 @@
 ﻿
 using AuthAPI.Models;
+using AuthAPI.Data;
 using AuthAPI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -19,20 +20,7 @@ namespace JwtWebApiDotNet7.Controllers
         private readonly IUserService _userService;
 
         [HttpPost("register")]
-        /* public async Task<IActionResult> Add(StudentViewModel addStudentRequest)
-        {
-            var student = new Student()
-            {
-                Id = addStudentRequest.Id,
-                FirstName = addStudentRequest.FirstName,
-                LastName = addStudentRequest.LastName,
-                Email = addStudentRequest.Email
-            };
-            await studentDbContext.Students.AddAsync(student);
-            await studentDbContext.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-        */
+        
        
         public ActionResult<User> Register(UserDto request)
         {
@@ -45,9 +33,10 @@ namespace JwtWebApiDotNet7.Controllers
 
             return Ok(user);
         }
-
+       
         [HttpPost("login")]
 
+        
         public ActionResult<User> Login(UserDto request)
         {
             if (user.Email != request.Username)

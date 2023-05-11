@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "49DY/9EhWdh3EhGAIPyilKbwfyMkScWic6L3D/mgFjNI6qXp1WvUb4+jqFVTxYvCoqIjiANsX4Pg8Ix9NZxXaw==",
+  "dgSpecHash": "AsXRTICN6GcQBM5Q2Uc81/hpupCoRMiOtbSoc6VpgJs4quRO7/xTTFLT704ptzDfLrw9yXs4yBGH7Bt/36/XeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\murat\\OneDrive\\Desktop\\CODES\\gitHub\\ASP.NET-CORE-LOGIN-AND-AUTH\\AuthAPI\\AuthAPI.csproj",
+  "projectFilePath": "C:\\Users\\murat\\OneDrive\\Desktop\\Yeni klasör\\AuthAPI\\AuthAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\murat\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\murat\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -20,7 +20,7 @@ namespace AuthAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast"),Authorize(Roles ="admin")]
+        [HttpGet("If authorized , you can see weather forecast"),Authorize(Roles ="admin")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -30,6 +30,7 @@ namespace AuthAPI.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+
         }
     }
 }

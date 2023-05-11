@@ -48,8 +48,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 
 
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -68,3 +66,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+  // admin = murat@gmail.com --- deneme123
+  //personel = personel@gmail.com ---sifre123

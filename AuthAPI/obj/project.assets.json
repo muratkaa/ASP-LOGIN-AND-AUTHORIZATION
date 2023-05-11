@@ -4125,11 +4125,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\murat\\OneDrive\\Desktop\\CODES\\gitHub\\ASP.NET-CORE-LOGIN-AND-AUTH\\AuthAPI\\AuthAPI.csproj",
+      "projectUniqueName": "C:\\Users\\murat\\OneDrive\\Desktop\\Yeni klasör\\AuthAPI\\AuthAPI.csproj",
       "projectName": "AuthAPI",
-      "projectPath": "C:\\Users\\murat\\OneDrive\\Desktop\\CODES\\gitHub\\ASP.NET-CORE-LOGIN-AND-AUTH\\AuthAPI\\AuthAPI.csproj",
+      "projectPath": "C:\\Users\\murat\\OneDrive\\Desktop\\Yeni klasör\\AuthAPI\\AuthAPI.csproj",
       "packagesPath": "C:\\Users\\murat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\murat\\OneDrive\\Desktop\\CODES\\gitHub\\ASP.NET-CORE-LOGIN-AND-AUTH\\AuthAPI\\obj\\",
+      "outputPath": "C:\\Users\\murat\\OneDrive\\Desktop\\Yeni klasör\\AuthAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

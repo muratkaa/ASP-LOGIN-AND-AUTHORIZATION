@@ -1,4 +1,4 @@
-﻿/*namespace AuthAPI.Services;
+﻿namespace AuthAPI.Services;
 
 using AuthAPI.Data;
 using AuthAPI.Models;
@@ -47,11 +47,13 @@ using System.Text;
             ExpirationTime = expirationTime
         };
 
-        _dbContext.Sessions.Add(session);
-        _dbContext.SaveChanges();
+        _dbContext.Sessions.Add(session); // Add the new session to the Sessions DbSet
+        _dbContext.SaveChanges(); // Save the changes to the database
 
         return session;
     }
+
+
 
     public Session GetSessionByToken(string sessionToken)
     {
@@ -94,4 +96,3 @@ using System.Text;
         }
     }
 }
-*/
