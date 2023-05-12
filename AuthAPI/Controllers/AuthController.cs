@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace JwtWebApiDotNet7.Controllers
 {
@@ -16,27 +17,28 @@ namespace JwtWebApiDotNet7.Controllers
     public class AuthController : ControllerBase
     {
         public static User user = new User();
+        private readonly MVCDemoDbContext mVCDemoDbContext;
         private readonly IConfiguration _configuration;
         private readonly IUserService _userService;
 
         [HttpPost("register")]
-        
-       
-        public ActionResult<User> Register(UserDto request)
-        {
-            string passwordHash
-                = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-            user.Email = request.Username;
-            user.PasswordHash = passwordHash;
-            user.Role = request.Role;
 
-            return Ok(user);
-        }
-       
+         public ActionResult<User> Register(UserDto request)
+         {
+             string passwordHash
+                 = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
+             user.Email = request.Username;
+             user.PasswordHash = passwordHash;
+             user.Role = request.Role;
+
+             return Ok(user);
+         }
+
         [HttpPost("login")]
 
-        
+
         public ActionResult<User> Login(UserDto request)
         {
             if (user.Email != request.Username)
@@ -53,7 +55,7 @@ namespace JwtWebApiDotNet7.Controllers
 
             return Ok(token);
         }
-
+        
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim> {

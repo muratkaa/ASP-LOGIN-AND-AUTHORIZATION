@@ -1,0 +1,1 @@
+Hocam DB yi bağlayamadım. Açtığınızda admin rolünde bir kullanıcı oluşturduğunuzda hashed passwordu aşağıda görebiliyorsunuz, sonra o kullanıcıyla giriş yaptığınızda size bir token veriyor. O tokeni alıp yukarıda authorizaton kısmında "bearer token" şeklinde yazınca da authorization yapmış oluyosunuz. Bu sayede eğer authorization olduysa hava durumuna bakabiliyorsunuz.
