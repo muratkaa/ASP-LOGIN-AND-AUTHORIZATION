@@ -1,61 +1,62 @@
-﻿
+﻿using AuthAPI.Data;
 using AuthAPI.Models;
-using AuthAPI.Data;
-using AuthAPI;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using AuthAPI.Services;
+using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
+using System.Security.Claims;
+using AuthAPI.Tools;
+using AuthAPI.Models.DbEntities;
 
-namespace JwtWebApiDotNet7.Controllers
+namespace AuthAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    [Route("[controller]")]
+    public class LoginController : ControllerBase
     {
-        public static User user = new User();
-        private readonly MVCDemoDbContext mVCDemoDbContext;
-        private readonly IConfiguration _configuration;
-        private readonly IUserService _userService;
+        private readonly MVCDemoDbContext _context;
+        private readonly UserService _userService;
+    
 
-        [HttpPost("register")]
+        public LoginController(MVCDemoDbContext context)
+        {
+            _context = context;
+            _userService = new UserService(_context);
+        }
+        
 
-
-         public ActionResult<User> Register(UserDto request)
-         {
-             string passwordHash
-                 = BCrypt.Net.BCrypt.HashPassword(request.Password);
-
-             user.Email = request.Username;
-             user.PasswordHash = passwordHash;
-             user.Role = request.Role;
-
-             return Ok(user);
-         }
 
         [HttpPost("login")]
-
-
-        public ActionResult<User> Login(UserDto request)
+        public IActionResult Login([FromBody] LoginRequest userCredentials)
         {
-            if (user.Email != request.Username)
-            {
-                return BadRequest("User not found.");
-            }
+            
+            var user = _context.Users.FirstOrDefault(u => u.Email == userCredentials.Email && u.PasswordHash == PasswordHash(userCredentials.Password));
 
-            if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-            {
-                return BadRequest("Wrong password.");
-            }
 
+            if (user == null)
+            { 
+                
+                return Unauthorized();
+            }
             string token = CreateToken(user);
 
             return Ok(token);
+
         }
-        
+
+        private string PasswordHash(string password)
+        {
+            
+            using (var sha256 = SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            }
+        }
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim> {
